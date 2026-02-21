@@ -7,19 +7,21 @@ from utils.pyq_loader import load_pyqs
 from embeddings.embed_pyqs import embed_pyqs
 from vector_store.pyq_index import PyqIndex
 from scoring.pyq_retriever import retrieve_pyqs
-
-# 🔹 NEW IMPORT
 from ingestion.registry_manager import get_active_documents
+
+
+# 🔥 Determine project root (important for Render)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 
 def run_university_ranking(interest_text):
     university_data = []
 
-    # 🔹 Load only ACTIVE documents from registry
     active_docs = get_active_documents()
 
     for doc in active_docs:
-        file_path = doc["file_path"]
+        # ✅ FIXED PATH RESOLUTION
+        file_path = os.path.join(PROJECT_ROOT, doc["file_path"])
         university_name = doc["university"]
 
         text = extract_text(file_path)
@@ -52,7 +54,8 @@ def run_university_ranking(interest_text):
 
 
 def run_pyq_retrieval(entrance, subject, interest_text):
-    pyq_path = f"data/pyqs/{entrance}/{subject}.txt"
+    # ✅ FIXED PYQ PATH
+    pyq_path = os.path.join(PROJECT_ROOT, "data", "pyqs", entrance, f"{subject}.txt")
 
     pyqs = load_pyqs(pyq_path)
     pyq_embeddings = embed_pyqs(pyqs)
@@ -69,7 +72,6 @@ def run_pyq_retrieval(entrance, subject, interest_text):
 
 
 if __name__ == "__main__":
-    # 🔹 USER INPUT (later from frontend)
     interest = "calculus, limits and functions"
 
     print("\n=== Ranked Universities ===")
@@ -80,7 +82,6 @@ if __name__ == "__main__":
         for u in r["top_units"]:
             print("  -", u["unit"], "→", round(u["score"], 3))
 
-    # 🔹 USER SELECTS UNIVERSITY / ENTRANCE
     print("\n=== Related PYQs (JEE - Mathematics) ===")
     pyq_results = run_pyq_retrieval(
         entrance="jee",
