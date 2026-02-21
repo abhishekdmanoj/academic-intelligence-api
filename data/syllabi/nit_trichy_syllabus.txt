@@ -1,0 +1,17 @@
+MATHEMATICS
+
+UNIT 1: ALGEBRA
+Complex numbers. Quadratic equations. Matrices and determinants.
+Solutions of linear equations.
+
+UNIT 2: FUNCTIONS AND LIMITS
+Functions, relations, limits and continuity.
+Differentiation of functions and applications.
+
+UNIT 3: INTEGRATION
+Methods of integration. Definite integrals.
+Applications of integration.
+
+UNIT 4: VECTOR ALGEBRA
+Vectors and scalars. Vector operations.
+Applications in geometry.

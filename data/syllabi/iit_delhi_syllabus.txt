@@ -1,0 +1,17 @@
+MATHEMATICS
+
+UNIT 1: SETS, RELATIONS AND FUNCTIONS
+Sets and their representation. Types of relations. One-one, onto and bijective functions.
+Composition of functions and inverse functions.
+
+UNIT 2: LIMIT, CONTINUITY AND DIFFERENTIABILITY
+Concept of limit of a function. Continuity of functions. Differentiability.
+Derivative as rate of change. Applications of derivatives.
+
+UNIT 3: INTEGRAL CALCULUS
+Indefinite integrals. Methods of integration. Definite integrals and applications.
+Area under curves.
+
+UNIT 4: DIFFERENTIAL EQUATIONS
+Formation of differential equations. First order differential equations.
+Applications in real-world problems.

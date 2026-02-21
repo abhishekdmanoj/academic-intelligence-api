@@ -1,0 +1,18 @@
+MATHEMATICS
+
+UNIT 1: BASIC ALGEBRA
+Polynomials. Linear and quadratic equations.
+Basic set theory.
+
+UNIT 2: TRIGONOMETRY
+Trigonometric functions and identities.
+Applications in heights and distances.
+
+UNIT 3: INTRODUCTORY CALCULUS
+Basic concept of limits.
+Introduction to differentiation.
+Simple applications.
+
+UNIT 4: STATISTICS
+Measures of central tendency.
+Probability and data analysis.

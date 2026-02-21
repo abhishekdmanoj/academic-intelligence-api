@@ -1,0 +1,7 @@
+Explain the concept of one-one and onto functions with suitable examples.
+Find the limit of a function using first principles.
+Check the continuity of a given function at a specified point.
+Evaluate the integral of a function using substitution method.
+Solve a first-order differential equation using variable separation.
+Find the derivative of a composite function using chain rule.
+Determine whether a function is differentiable at a point.

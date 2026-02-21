@@ -1,0 +1,6 @@
+Derive the equations of motion using Newton’s laws.
+Explain the concept of work-energy theorem.
+Calculate the electric field due to a point charge.
+State and explain Faraday’s law of electromagnetic induction.
+Derive the expression for centripetal force.
+Explain the principle of conservation of momentum with examples.
