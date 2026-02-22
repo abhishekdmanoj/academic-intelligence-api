@@ -2,12 +2,15 @@ import json
 import os
 import uuid
 from datetime import datetime
+from pathlib import Path
 
-REGISTRY_PATH = "data/registry.json"
+# Absolute project root (works on Windows + Linux)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+REGISTRY_PATH = PROJECT_ROOT / "data" / "registry.json"
 
 
 def load_registry():
-    if not os.path.exists(REGISTRY_PATH):
+    if not REGISTRY_PATH.exists():
         return {"documents": []}
 
     with open(REGISTRY_PATH, "r") as f:
@@ -61,6 +64,11 @@ def add_new_document(university_name, source_url, file_hash, file_path):
     # Deactivate older versions
     deactivate_previous_versions(university_name)
 
+    # 🔥 CRITICAL FIX: Store OS-agnostic relative path
+    absolute_path = Path(file_path).resolve()
+    relative_path = absolute_path.relative_to(PROJECT_ROOT)
+    relative_path = str(relative_path).replace("\\", "/")  # enforce forward slashes
+
     new_entry = {
         "id": str(uuid.uuid4()),
         "university": university_name,
@@ -68,7 +76,7 @@ def add_new_document(university_name, source_url, file_hash, file_path):
         "hash": file_hash,
         "version_date": datetime.utcnow().strftime("%Y-%m-%d"),
         "active": True,
-        "file_path": file_path
+        "file_path": relative_path
     }
 
     registry["documents"].append(new_entry)
