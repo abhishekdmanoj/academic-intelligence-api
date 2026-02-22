@@ -11,6 +11,12 @@ from fastapi.middleware.cors import CORSMiddleware
 # ✅ Create app FIRST
 app = FastAPI(title="Academic Intelligence API")
 
+from embeddings.model import load_embedding_model
+
+print("🔥 Preloading embedding model at startup...")
+load_embedding_model()
+print("🔥 Model preloaded successfully.")
+
 # ✅ Then add middleware
 app.add_middleware(
     CORSMiddleware,
