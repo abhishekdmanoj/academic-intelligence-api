@@ -10,8 +10,8 @@ from scoring.pyq_retriever import retrieve_pyqs
 from ingestion.registry_manager import get_active_documents
 
 
-# 🔥 Determine project root (important for Render)
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# 🔥 Correct project root (works on Render + locally)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
 def run_university_ranking(interest_text):
@@ -20,9 +20,13 @@ def run_university_ranking(interest_text):
     active_docs = get_active_documents()
 
     for doc in active_docs:
-        # ✅ FIXED PATH RESOLUTION
+        # ✅ Correct absolute path resolution
         file_path = os.path.join(PROJECT_ROOT, doc["file_path"])
         university_name = doc["university"]
+
+        if not os.path.exists(file_path):
+            print(f"❌ File not found: {file_path}")
+            continue
 
         text = extract_text(file_path)
         print(f"\n📄 {university_name} — Extracted text length:", len(text))
@@ -54,8 +58,17 @@ def run_university_ranking(interest_text):
 
 
 def run_pyq_retrieval(entrance, subject, interest_text):
-    # ✅ FIXED PYQ PATH
-    pyq_path = os.path.join(PROJECT_ROOT, "data", "pyqs", entrance, f"{subject}.txt")
+    pyq_path = os.path.join(
+        PROJECT_ROOT,
+        "data",
+        "pyqs",
+        entrance,
+        f"{subject}.txt"
+    )
+
+    if not os.path.exists(pyq_path):
+        print(f"❌ PYQ file not found: {pyq_path}")
+        return []
 
     pyqs = load_pyqs(pyq_path)
     pyq_embeddings = embed_pyqs(pyqs)
