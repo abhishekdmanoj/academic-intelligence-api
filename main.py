@@ -11,6 +11,9 @@ from ingestion.registry_manager import get_active_documents
 
 
 # 🔥 Correct project root (works on Render + locally)
+
+print("🔥 NEW VERSION OF MAIN.PY LOADED")
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -27,6 +30,8 @@ def run_university_ranking(interest_text):
         if not os.path.exists(file_path):
             print(f"❌ File not found: {file_path}")
             continue
+        
+        print("DEBUG FILE PATH:", file_path)
 
         text = extract_text(file_path)
         print(f"\n📄 {university_name} — Extracted text length:", len(text))
